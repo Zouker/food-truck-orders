@@ -7,16 +7,11 @@ type OrderType = {
     status: string
 }
 
-const statuses = ['new', 'cooking', 'ready', 'delivered']
-const initialOrders: OrderType[] = [
-    {id: 1, name: 'Alex', status: 'new'},
-    {id: 2, name: 'Michael', status: 'cooking'},
-]
+const statuses = ['new', 'cooking', 'ready', 'delivered'];
 
 function App() {
     const [name, setName] = useState('');
-    const [orders, setOrders] = useState(initialOrders)
-
+    const [orders, setOrders] = useState<OrderType[]>([{id: 0, name: name, status: ''}])
 
     const onAdd = () => {
         setName('');
