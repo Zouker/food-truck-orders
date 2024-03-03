@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {useState} from "react";
+import React from "react";
 
 type OrderType = {
     id: number,
@@ -10,8 +10,8 @@ type OrderType = {
 const statuses = ['new', 'cooking', 'ready', 'delivered'];
 
 function App() {
-    const [name, setName] = useState('');
-    const [orders, setOrders] = useState<OrderType[]>([{id: 0, name: name, status: ''}])
+    const [name, setName] = React.useState('');
+    const [orders, setOrders] = React.useState<OrderType[]>([{id: 0, name: name, status: ''}])
 
     const onAdd = () => {
         setName('');
@@ -27,11 +27,11 @@ function App() {
         )
     }
 
-    const onNameChange = (e) => {
+    const onNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
     }
 
-    const onOrderClick = (order) => {
+    const onOrderClick = (order: OrderType) => {
         const currentStatus = order.status;
         const nextStatus = statuses[statuses.indexOf(currentStatus) + 1];
         const newOrders = orders.map((o) => {
